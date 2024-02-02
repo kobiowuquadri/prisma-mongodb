@@ -52,7 +52,7 @@ const SignIn = async (req, res) => {
     // validate email
     const isEmail = await prisma.user.findUnique({where: {email}})
     if(!isEmail){
-      return res.status(400).json({success: false, message: "Invalid email."})
+      return res.status(400).json({success: false, message: "Invalid email or password."})
     }
     // compare passwords
     const isPassword = await bcrypt.compare(password, isEmail.password)
